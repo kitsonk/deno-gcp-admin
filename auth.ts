@@ -1,5 +1,13 @@
 import { importPKCS8, SignJWT } from "https://deno.land/x/jose@v4.8.1/index.ts";
 
+// jose uses this and it isn't available under the built in libs in TypeScript
+declare global {
+  interface ErrorConstructor {
+    // deno-lint-ignore ban-types
+    captureStackTrace(error: Object, constructor?: Function): void;
+  }
+}
+
 const ALG = "RS256";
 const AUD =
   "https://identitytoolkit.googleapis.com/google.identity.identitytoolkit.v1.IdentityToolkit";
