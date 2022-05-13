@@ -122,7 +122,7 @@ export async function createOAuth2Token(
     res.status === 200,
     `Unexpected authorization response ${res.status} - ${res.statusText}.`,
   );
-  return res.json();
+  return new OAuth2Token(await res.json());
 }
 
 /** Generates a custom token that can be used with Firebase's
