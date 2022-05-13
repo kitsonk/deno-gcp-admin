@@ -45,7 +45,7 @@ export class OAuth2Token {
   /** The number of seconds until the token expires. If less than or equal to 0
    * then the token has expired. */
   get expiresIn(): number {
-    return Date.now() - (this.#created + this.#json.expires_in);
+    return (this.#created + this.#json.expires_in) - Date.now();
   }
   /** Any scopes returned in the authorization response. */
   get scope(): string | undefined {
